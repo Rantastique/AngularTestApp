@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
 /*
 just get some dummy data for now
  */
@@ -79,13 +81,17 @@ const PERSON_DATA: Person[] = [
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss']
 })
-export class DataTableComponent implements OnInit {
-  personDataSource = PERSON_DATA;
+export class DataTableComponent implements OnInit, AfterViewInit {
+  personDataSource = new MatTableDataSource(PERSON_DATA);
   columnsToDisplay: string[] = ['id', 'first_name', 'last_name', 'email', 'catchphrase'];
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(): void {
+    this.personDataSource.sort = this.sort;
+  }
 }

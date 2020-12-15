@@ -5,6 +5,7 @@ import { DataTableRoutingModule } from './data-table-routing.module';
 import { DataTableComponent } from './data-table.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {MatTableModule} from '@angular/material/table';
     CommonModule,
     DataTableRoutingModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatSortModule
   ]
 })
 export class DataTableModule { }
