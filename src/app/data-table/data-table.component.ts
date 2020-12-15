@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
+import {SelectionModel} from '@angular/cdk/collections';
 /*
 just get some dummy data for now
  */
@@ -83,7 +84,9 @@ const PERSON_DATA: Person[] = [
 })
 export class DataTableComponent implements OnInit, AfterViewInit {
   personDataSource = new MatTableDataSource(PERSON_DATA);
-  columnsToDisplay: string[] = ['id', 'first_name', 'last_name', 'email', 'catchphrase'];
+  columnsToDisplay: string[] = ['select', 'id', 'first_name', 'last_name', 'email', 'catchphrase'];
+  selection = new SelectionModel<Person>(true, []);
+
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor() { }
@@ -93,5 +96,20 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.personDataSource.sort = this.sort;
+  }
+
+  // Directly taken from https://material.angular.io/components/table/overview#selection
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected(): boolean {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.personDataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle(): void {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.personDataSource.data.forEach(row => this.selection.select(row));
   }
 }

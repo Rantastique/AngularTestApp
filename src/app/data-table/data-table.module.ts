@@ -6,7 +6,7 @@ import { DataTableComponent } from './data-table.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [DataTableComponent],
@@ -15,7 +15,8 @@ import {MatSortModule} from '@angular/material/sort';
     DataTableRoutingModule,
     MatButtonModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatCheckboxModule,
   ]
 })
 export class DataTableModule { }
