@@ -1,2 +1,37 @@
 <h2>All The Data</h2>
 <button mat-raised-button routerLink="/dashboard">Zurück</button>
+
+<table mat-table [dataSource]="personDataSource">
+  <!-- ID -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <!-- first name -->
+  <ng-container matColumnDef="first_name">
+    <th mat-header-cell *matHeaderCellDef> Vorname </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <!-- last name -->
+  <ng-container matColumnDef="last_name">
+    <th mat-header-cell *matHeaderCellDef> Nachname </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <!-- e-Mail -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> E-Mail </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <!-- Catchphrase -->
+  <ng-container matColumnDef="catchphrase">
+    <th mat-header-cell *matHeaderCellDef> Motto </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+</table>
