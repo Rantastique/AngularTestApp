@@ -3,6 +3,10 @@ mat-sidenav-content {
   width: 100vw;
 }
 
+.mat-nav-list a.active {
+  background: lightgray;
+}
+
 .container-basic {
   padding: 3%;
 }
