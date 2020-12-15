@@ -87,4 +87,8 @@ export class PersonDataService {
     return this.personData;
   }
 
+  getNumberOfPersons(): number {
+    return this.personData.length;
+  }
+
 }
