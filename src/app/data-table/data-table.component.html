@@ -1,6 +1,7 @@
 <h2>All The Data</h2>
 <button mat-raised-button routerLink="/dashboard">Zurück</button>
 <button mat-raised-button (click)="showNumberOfSelectedItems()">Show</button>
+<button mat-raised-button (click)="sendSelectedItems()">Send</button>
 
 <table class="mat-elevation-z8" mat-table matSort [dataSource]="personDataSource">
   <!-- select -->

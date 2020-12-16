@@ -40,10 +40,27 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     return this.personDataService.getPersonData();
   }
 
+  sendSelectedItems(): void {
+    const selection = this.selection.selected;
+    this.personDataService.postSelection(selection).subscribe((res) => {
+      const succesMsg = 'Daten erfolgreich gesendet';
+      this.showResultSnackbar(succesMsg);
+    }, (error => {
+      const errorMsg = 'Etwas ist schief gegangen. Error: ' + error.message;
+      this.showResultSnackbar(errorMsg);
+    }));
+  }
+
   showNumberOfSelectedItems(): void {
     const selection = this.selection.selected;
     const selNumber = selection.length;
     const msg = 'Es wurden ' + selNumber + ' Reihen ausgewählt.';
+    this.snackbar.open(msg, 'OK', {
+      duration: 3000
+    });
+  }
+
+  showResultSnackbar(msg: string): void {
     this.snackbar.open(msg, 'OK', {
       duration: 3000
     });
