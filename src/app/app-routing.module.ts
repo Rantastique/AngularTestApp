@@ -5,6 +5,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
   { path: 'data-table', loadChildren: () => import('./data-table/data-table.module').then(m => m.DataTableModule) },
+  { path: '**', redirectTo: 'dashboard'}
   ];
 
 @NgModule({
