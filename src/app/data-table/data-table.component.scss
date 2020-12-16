@@ -6,6 +6,10 @@ table {
   overflow: initial;
 }
 
-.mat-raised-button {
+.flex-container {
+  width: 50%;
   margin-bottom: 1%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
 }
