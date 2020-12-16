@@ -4,6 +4,7 @@ import {MatSort} from '@angular/material/sort';
 import {SelectionModel} from '@angular/cdk/collections';
 import {Person, PersonDataService} from '../person-data.service';
 import {Subscription} from 'rxjs';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-data-table',
@@ -19,7 +20,7 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private personDataService: PersonDataService) {
+  constructor(private personDataService: PersonDataService, private snackbar: MatSnackBar) {
     this.personData = this.getPersonData();
     this.personDataSource = new MatTableDataSource(this.personData);
   }
@@ -37,6 +38,15 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   getPersonData(): Array<Person> {
     return this.personDataService.getPersonData();
+  }
+
+  showNumberOfSelectedItems(): void {
+    const selection = this.selection.selected;
+    const selNumber = selection.length;
+    const msg = 'Es wurden ' + selNumber + ' Reihen ausgewählt.';
+    this.snackbar.open(msg, 'OK', {
+      duration: 3000
+    });
   }
 
   // Directly taken from https://material.angular.io/components/table/overview#selection
