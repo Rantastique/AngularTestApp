@@ -79,9 +79,13 @@ const PERSON_DATA: Person[] = [
   providedIn: 'root'
 })
 export class PersonDataService {
-  private personData = PERSON_DATA;
+  private personData: Array<Person> = [];
 
   constructor() { }
+
+  fetchPersonData(): void {
+    this.personData = PERSON_DATA;
+  }
 
   getPersonData(): Array<Person> {
     return this.personData;
