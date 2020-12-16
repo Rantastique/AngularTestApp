@@ -3,6 +3,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {SelectionModel} from '@angular/cdk/collections';
 import {Person, PersonDataService} from '../person-data.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-data-table',
@@ -10,6 +11,7 @@ import {Person, PersonDataService} from '../person-data.service';
   styleUrls: ['./data-table.component.scss']
 })
 export class DataTableComponent implements OnInit, AfterViewInit {
+  changeSubscription!: Subscription;
   personData: Array<Person> = [];
   personDataSource: MatTableDataSource<Person>;
   columnsToDisplay: string[] = ['select', 'id', 'first_name', 'last_name', 'email', 'catchphrase'];
@@ -23,7 +25,10 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-
+    this.changeSubscription = this.personDataService.getChangeNotifier().subscribe(() => {
+      this.personData = this.getPersonData();
+      this.personDataSource = new MatTableDataSource(this.personData);
+    });
   }
 
   ngAfterViewInit(): void {
