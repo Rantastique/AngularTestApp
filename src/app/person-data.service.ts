@@ -18,7 +18,7 @@ export interface Person {
   providedIn: 'root'
 })
 export class PersonDataService {
-  dataChanged = new Subject<void>();
+  dataChanged = new Subject<Array<Person>>();
   private personData: Array<Person> = [];
 
   constructor(private http: HttpClient, private snackbar: MatSnackBar) { }
@@ -26,11 +26,9 @@ export class PersonDataService {
   fetchPersonData(): void {
     this.http.get<Array<Person>>(API_GET_URL).subscribe((res) => {
       this.personData = res;
-      this.dataChanged.next();
+      this.dataChanged.next(this.personData);
     }, (error => {
-        this.personData = DUMMY_DATA;
-        this.showDummySnackbar();
-        this.dataChanged.next();
+        this.dataChanged.next(DUMMY_DATA);
       }));
   }
 
@@ -38,7 +36,7 @@ export class PersonDataService {
     return this.http.post(API_POST_URL, selectedRows);
   }
 
-  getChangeNotifier(): Observable<void> {
+  getChangeNotifier(): Observable<Array<Person>> {
     return this.dataChanged.asObservable();
   }
 

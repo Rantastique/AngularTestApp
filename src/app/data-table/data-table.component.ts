@@ -28,7 +28,7 @@ export class DataTableComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     this.changeSubscription = this.personDataService.getChangeNotifier().subscribe(() => {
       this.personData = this.getPersonData();
-      this.personDataSource = new MatTableDataSource(this.personData);
+      // this.personDataSource = new MatTableDataSource(this.personData);
     });
   }
 
