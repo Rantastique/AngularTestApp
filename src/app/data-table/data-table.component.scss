@@ -7,9 +7,13 @@ table {
 }
 
 .flex-container {
-  width: 50%;
+  width: 100%;
   margin-bottom: 1%;
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+
+  button{
+    margin: 0 8px 8px 0;
+  }
 }
