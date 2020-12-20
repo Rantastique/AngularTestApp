@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import {SelectionModel} from '@angular/cdk/collections';
@@ -11,7 +11,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss']
 })
-export class DataTableComponent implements OnInit, AfterViewInit {
+export class DataTableComponent implements OnInit, AfterViewInit, OnDestroy {
   changeSubscription!: Subscription;
   personData: Array<Person> = [];
   personDataSource: MatTableDataSource<Person>;
@@ -34,6 +34,10 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.personDataSource.sort = this.sort;
+  }
+
+  ngOnDestroy(): void {
+    this.changeSubscription.unsubscribe();
   }
 
   getPersonData(): Array<Person> {
