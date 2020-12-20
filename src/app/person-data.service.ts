@@ -8,8 +8,8 @@ const API_POST_URL = 'dummy_url';
 
 export interface Person {
   id: number;
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   catchphrase: string;
 }
@@ -63,62 +63,62 @@ export class PersonDataService {
 const DUMMY_DATA = [
   {
     id: 1,
-    first_name: 'Teddi',
-    last_name: 'Dunning',
+    firstName: 'Teddi',
+    lastName: 'Dunning',
     email: 'tdunning0@spiegel.de',
     catchphrase: 'Progressive incremental intranet'
   }, {
     id: 2,
-    first_name: 'Davin',
-    last_name: 'Maycey',
+    firstName: 'Davin',
+    lastName: 'Maycey',
     email: 'dmaycey1@census.gov',
     catchphrase: 'Sharable actuating alliance'
   }, {
     id: 3,
-    first_name: 'Obidiah',
-    last_name: 'Coules',
+    firstName: 'Obidiah',
+    lastName: 'Coules',
     email: 'ocoules2@alexa.com',
     catchphrase: 'Front-line asynchronous benchmark'
   }, {
     id: 4,
-    first_name: 'Theodosia',
-    last_name: 'Sandison',
+    firstName: 'Theodosia',
+    lastName: 'Sandison',
     email: 'tsandison3@pagesperso-orange.fr',
     catchphrase: 'Exclusive next generation challenge'
   }, {
     id: 5,
-    first_name: 'Ginevra',
-    last_name: 'Garnall',
+    firstName: 'Ginevra',
+    lastName: 'Garnall',
     email: 'ggarnall4@kickstarter.com',
     catchphrase: 'Streamlined heuristic paradigm'
   }, {
     id: 6,
-    first_name: 'Che',
-    last_name: 'Nijssen',
+    firstName: 'Che',
+    lastName: 'Nijssen',
     email: 'cnijssen5@newsvine.com',
     catchphrase: 'Cloned intermediate synergy'
   }, {
     id: 7,
-    first_name: 'Matthus',
-    last_name: 'Bansal',
+    firstName: 'Matthus',
+    lastName: 'Bansal',
     email: 'mbansal6@shareasale.com',
     catchphrase: 'Future-proofed neutral migration'
   }, {
     id: 8,
-    first_name: 'Averil',
-    last_name: 'Steinham',
+    firstName: 'Averil',
+    lastName: 'Steinham',
     email: 'asteinham7@harvard.edu',
     catchphrase: 'Profit-focused 24/7 complexity'
   }, {
     id: 9,
-    first_name: 'Katrinka',
-    last_name: 'Bezants',
+    firstName: 'Katrinka',
+    lastName: 'Bezants',
     email: 'kbezants8@walmart.com',
     catchphrase: 'Focused asynchronous archive'
   }, {
     id: 10,
-    first_name: 'Blair',
-    last_name: 'Berr',
+    firstName: 'Blair',
+    lastName: 'Berr',
     email: 'bberr9@discovery.com',
     catchphrase: 'Secured system-worthy definition'
   }];
